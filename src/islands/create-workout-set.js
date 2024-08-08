@@ -83,9 +83,9 @@ class CreateWorkoutSet extends HTMLElement {
     const deletedExerciseId = Number(element.getAttribute('exercise-id'));
     element.remove();
 
-    const createSetExercises = this.querySelectorAll('create-set-exercise');
+    const exerciseElements = this.querySelectorAll('create-set-exercise');
 
-    createSetExercises.forEach(element => {
+    exerciseElements.forEach(element => {
       const exerciseId = Number(element.getAttribute('exercise-id'));
       if (exerciseId > deletedExerciseId) {
         element.setAttribute('exercise-id', String(exerciseId - 1));
@@ -94,7 +94,8 @@ class CreateWorkoutSet extends HTMLElement {
   }
 
   resetExercises() {
-    console.log('test');
+    const exerciseElements = this.querySelectorAll('create-set-exercise');
+    exerciseElements.forEach((element, index) => index > 0 && element.remove());
   }
 };
 
